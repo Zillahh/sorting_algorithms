@@ -3,54 +3,36 @@
 #include "sort.h"
 
 /**
- * swap_int - a function that swaps two integers
- *
- * @a:  first int of an array
- * @b: second int of an array
- *
- */
-void swap_int(int *a, int *b)
-{
-	int temp;
-
-	temp = *a;
-	*a = *b;
-	*b = temp;
-}
-/**
  * selection_sort - a function thst sorts an array of integers in ascending
  * order using selection sort algorithm
  *
  * @array:the array to sort from
  * @size: of the array i
  *
- * Retur: void
+ * Return: void
  */
 
 void selection_sort(int *array, size_t size)
 {
-	int *min;
-	size_t i, j;
+	size_t i, j, min;
+	int tmp;
 
-	if (array == NULL || !array || size < 2)
-	{
+	if (array == NULL || size < 2)
 		return;
-	}
-
-	for (i = 0; i < size - 1; i++)
+	for (i = 0; i < size; i++)
 	{
-		min = array + 1;
-
+		min = i;
 		for (j = i + 1; j < size; j++)
 		{
-			if (array[j] < *min)
-				min = (array + j);
+			if (array[j] < array[min])
+				min = j;
 		}
-		if ((array + i) != min)
+		if (array[min] != array[i])
 		{
-			swap_int(array + i, min);
+			tmp = array[min];
+			array[min] = array[i];
+			array[i] = tmp;
 			print_array(array, size);
 		}
-
 	}
 }
