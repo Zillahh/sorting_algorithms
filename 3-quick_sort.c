@@ -4,7 +4,6 @@
 /**
  * partition - partition subarray of "array" around pivot
  * using lomuto method
- *
  * @array: array to partition
  * @left: left end of subarray
  * @right: right end of subarray
@@ -38,7 +37,7 @@ int partition(int *array, int left, int right, size_t size)
 		if (i == right)
 			return (i);
 		tmp = array[i];
-		array[i] = tmp;
+		array[i] = array[right];
 		array[right] = tmp;
 		print_array(array, size);
 	}
